@@ -1,0 +1,23 @@
+Package: ssdiags
+Type: Package
+Title: What the Package Does (Title Case)
+Version: 0.1.0
+Authors@R: person("Maia", "Kapur", email = "kapurm@uw.edu", role = c("aut", "cre"))
+Maintainer: Maia Kapur <kapurm@uw.edu>
+Description: More about what it does (maybe more than one line)
+    Use four spaces when indenting paragraphs within the Description.
+License: What license is it under?
+Depends: R (>= 3.2.0),
+    dplyr,
+    r4ss,
+    ggplot2,
+    tidyr,
+    reshape2,
+    Rmisc,
+    jpeg,
+    gridExtra,
+    RColorBrewer,
+    gridBase,
+Encoding: UTF-8
+LazyData: true
+
