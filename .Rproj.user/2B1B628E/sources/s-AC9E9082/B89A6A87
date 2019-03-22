@@ -5,15 +5,15 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "0",
+    "hash" : "1368992241",
     "id" : "B89A6A87",
-    "lastKnownWriteTime" : 1553228723,
-    "last_content_update" : 1553228723997,
+    "lastKnownWriteTime" : 1553228781,
+    "last_content_update" : 1553228781420,
     "path" : "~/GitHub/ssdiags/DESCRIPTION",
     "project_path" : "DESCRIPTION",
     "properties" : {
-        "cursorPosition" : "30,16",
-        "scrollLine" : "0"
+        "cursorPosition" : "10,0",
+        "scrollLine" : "2"
     },
     "relative_order" : 5,
     "source_on_save" : false,
