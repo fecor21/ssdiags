@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1553225211064.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "F9DA08A5",
+    "lastKnownWriteTime" : 1553227655,
+    "last_content_update" : 1553227655041,
+    "path" : "~/GitHub/ssdiags/R/SS_diags.R",
+    "project_path" : "R/SS_diags.R",
+    "properties" : {
+        "cursorPosition" : "7,30",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
