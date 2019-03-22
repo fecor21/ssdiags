@@ -40,7 +40,7 @@ runsSizeComp <- function(summaryoutput,
     yrs = agg[,1]
 
     Par = list(mfrow=c(ceiling(length(scenarios)/2),1),mar = c(1.2, 1.2, 1., 0.1),oma=c(0.5, 0.5, 0, 6), mgp =c(2.5,1,0), tck = -0.02,cex=0.8)
-    png(file = paste0("runstest_MeanSize.png"), width =7.5, height = 3.5,
+    png(file = paste0("./plots/runstest_MeanSize.png"), width =7.5, height = 3.5,
         res = 200, units = "in")
     par(Par)
     for(j in 1:length(scenarios)){
@@ -107,7 +107,7 @@ runsSizeComp <- function(summaryoutput,
     yrs = agg[,1]
 
     Par = list(mfrow=c(ceiling(length(scenarios)/2),1),mar = c(1.2, 1.2, 1., 0.1),oma=c(0.5, 0.5, 0, 6), mgp =c(2.5,1,0), tck = -0.02,cex=0.8)
-    png(file = paste0("runstest_MeanSize.png"), width =7.5, height = 3.5,
+    png(file = paste0("./plots/runstest_MeanSize.png"), width =7.5, height = 3.5,
         res = 200, units = "in")
     par(Par)
     for(j in 1:length(scenarios)){
@@ -181,7 +181,7 @@ runsSizeComp <- function(summaryoutput,
     yrs = agg[,1]
 
     Par = list(mfrow=c(ceiling(length(scenarios)/2),1),mar = c(1.2, 1.2, 1., 0.1),oma=c(0.5, 0.5, 0, 6), mgp =c(2.5,1,0), tck = -0.02,cex=0.8)
-    png(file = paste0("runstest_MeanSizeResid.png"), width =7.5, height = 3.5,
+    png(file = paste0("./plots/runstest_MeanSizeResid.png"), width =7.5, height = 3.5,
         res = 200, units = "in")
     par(Par)
     for(j in 1:length(scenarios)){
