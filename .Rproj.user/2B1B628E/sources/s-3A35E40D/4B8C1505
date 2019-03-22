@@ -5,15 +5,15 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "0",
+    "hash" : "284781288",
     "id" : "4B8C1505",
-    "lastKnownWriteTime" : 1553228218,
-    "last_content_update" : 1553228218538,
+    "lastKnownWriteTime" : 1553228961,
+    "last_content_update" : 1553228961464,
     "path" : "~/GitHub/ssdiags/R/runsSizeComp.R",
     "project_path" : "R/runsSizeComp.R",
     "properties" : {
-        "cursorPosition" : "239,0",
-        "scrollLine" : "216"
+        "cursorPosition" : "13,24",
+        "scrollLine" : "0"
     },
     "relative_order" : 4,
     "source_on_save" : false,

@@ -4,7 +4,7 @@
 #' @seealso \code{\link[r4ss]}
 
 produceRuns <- function(summaryoutput){
-  source("./R/runsSig3.R")
+  # source("./R/runsSig3.R")
   if(!exists(paste0(getwd(),"./plots/"))) dir.create(paste0(getwd(),"./plots/"))
   #---------------------
   # Index color palette

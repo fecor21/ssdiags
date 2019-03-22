@@ -11,7 +11,7 @@ runsSizeComp <- function(summaryoutput,
                          type = 'len',
                          fleet = 1:nfleet(summaryoutput)){
 
-  source("./R/getTA1.R") ## load SSMethod.TA1.8.FC function
+  # source("./R/getTA1.R") ## load SSMethod.TA1.8.FC function
   francisdat <- getTA1(summaryoutput, type = 'len', fleet = fleet, plotit = F) %>% as.data.frame()
   francisdat$Fleet <- summaryoutput$FleetNames[francisdat$Fleet] ## name the actual fleets
   # write.csv(francisdat,"francisDat.csv",row.names=F) ## save it
