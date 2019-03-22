@@ -11,14 +11,14 @@
 SS_diags <- function(summaryoutput,
          tests = 1:4,
          plot = T,
-         standardized = c(0,1,2)[3],
+
          type = 'len',
          fleet = 1:4
          ){
 
   if(1 %in% tests){ produceRuns(MLS) }
   if(2 %in% tests){ runsRecDev(summaryoutput)}
-  if(3 %in% tests){runsSizeComp(summaryoutput, standardized = standardized, type = type,
+  if(3 %in% tests){runsSizeComp(summaryoutput, type = type,
                                 fleet = fleet)}
   }
 

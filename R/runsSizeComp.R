@@ -7,7 +7,6 @@
 #' @seealso \code{\link[r4ss]}
 
 runsSizeComp <- function(summaryoutput,
-                         standardized = c(0,1,2)[3],
                          type = 'len',
                          fleet = 1:nfleet(summaryoutput)){
 
