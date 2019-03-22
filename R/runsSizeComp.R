@@ -232,9 +232,10 @@ runsSizeComp <- function(summaryoutput,
     par=par.save
   } ## end unstd
 
-  if(standardized == 1) std(summaryoutput)
-  if(standardized == 0) unstd(summaryoutput)
-  if(standardized == 2) std(summaryoutput); unstd(summaryoutput)
+  # if(standardized == 1) std(summaryoutput)
+  # if(standardized == 0) unstd(summaryoutput)
+  # if(standardized == 2) std(summaryoutput); unstd(summaryoutput)
+  std(summaryoutput); unstd(summaryoutput)
 
 }
 
