@@ -4,31 +4,52 @@
 #' @seealso \code{\link[r4ss]}
 
 produceRuns <- function(summaryoutput){
-  source("runsSig3.R")
-  par.save = par
+  source("./R/runsSig3.R")
+  if(!exists(paste0(getwd(),"./plots/"))) dir.create(paste0(getwd(),"./plots/"))
+  #---------------------
+  # Index color palette
+  #---------------------
+  # jabba.colors = as.character(c('#e6194b', "#3cb44b", "#ffe119",
+  #                               "#0082c8","#f58231", "#911eb4",
+  #                               "#46f0f0", "#f032e6", "#d2f53c",
+  #                               "#fabebe", "#008080","#e6beff", "#aa6e28",rainbow(12)[seq(1,12,3)],rainbow(12)[seq(2,12,3)],rainbow(12)[seq(3,12,3)]))
+  #
+  # cols = jabba.colors
+
+  par.save <- par
   # Extract residual for by scenario and index
-  d = summaryoutput$cpue
-  d$scenario = factor("s1")
+  d <- summaryoutput$cpue
+  d$scenario <- factor("s1")
   names(d)
-  scenarios = (levels(d$scenario))
-  d$residual = log(d$Obs)-log(d$Exp)
-  agg = aggregate(residual~Yr+Name,d,mean)
+  scenarios <- (levels(d$scenario))
+  d$residual <- log(d$Obs)-log(d$Exp)
+  agg <- aggregate(residual~Yr+Fleet_name,d,mean)
   #combine
-  idd = paste0(agg[,2])
-  yall = 1:length(idd)
-  iall = levels(factor(idd))
-  yrs = agg[,1]
+  idd <- paste0(agg[,2])
+  yall <- 1:length(idd)
+  iall <- levels(factor(idd))
+  yrs <- agg[,1]
 
   Par = list(mfrow=c(ceiling(length(scenarios)/2),1),mar = c(1.2, 1.2, 1., 0.1),oma=c(0, 0, 0, 6), mgp =c(2.,0.5,0), tck = -0.02,cex=0.8)
-  png(file = paste0("runstest.png"), width = 6, height = 3,
-      res = 200, units = "in")
+  png(file = paste0("./plots/runstest.png"), width = 6, height = 3,
+      res = 420, units = "in")
   par(Par)
   for(j in 1:length(scenarios)){
-    ds = d[d$scenario==scenarios[j],]
-    jdd = paste0(ds$Yr,".",ds$Name)
-    yj = which(idd %in% jdd)
-    ylim = c(-max(abs(d$residual)),max(abs(d$residual)))
-    plot(yall,yall,type="n",xlab="Year",xlim=c(1,max(yall)),ylim=ylim,axes=F,xaxs = "i",yaxs="i")
+    ds <- d[d$scenario == scenarios[j],]
+    jdd <- paste0(ds$Yr,".",ds$Fleet_name)
+    yj <- which(idd %in% jdd)
+    ylim <- c(-max(abs(d$residual)),max(abs(d$residual)))
+    plot(
+      yall,
+      yall,
+      type = "n",
+      xlab = "Year",
+      xlim = c(1, max(yall)),
+      ylim = ylim,
+      axes = F,
+      xaxs = "i",
+      yaxs = "i"
+    )
     axis(1,at=yall,labels=yrs,cex.axis=0.6,mgp=c(0.1,0.,0))
     axis(2,cex.axis=0.6,mgp=c(0.5,0.0,0))
     title(main=paste(ds$scenario)[1], mgp=c(0.1,0,0),cex.main=0.8,line=0.2)
@@ -36,13 +57,13 @@ produceRuns <- function(summaryoutput){
 
     #for(i in 1:length(indices)){}
     i = 1
-    ni = length(unique(ds$Name))
-    indices = levels(factor(ds$Name))
+    ni = length(unique(ds$Fleet_name))
+    indices = levels(factor(ds$Fleet_name))
 
 
     for(i in 1:ni){
-      di = ds[ds$Name==indices[i],]
-      yi = yall[which(agg$Name==indices[i])]
+      di = ds[ds$Fleet_name==indices[i],]
+      yi = yall[which(agg$Fleet_name==indices[i])]
       get_runs = runs.sig3(di$residual)
       lims = get_runs$sig3lim
       polygon(c(yi,rev(yi)),c(rep(ylim[1],nrow(di)),rev(rep(ylim[2],nrow(di)))),col=ifelse(get_runs$p.runs<0.05,rgb(1,0,0,0.5),rgb(0,1,0,0.5)),border=0)
@@ -61,7 +82,7 @@ produceRuns <- function(summaryoutput){
     abline(h=0,lty=2)
     abline(h=max(abs(d$residual)))
     for(i in 1:length(iall)){
-      abline(v=0.5+max(which(agg$Name==levels(factor(agg$Name))[i])))
+      abline(v=0.5+max(which(agg$Fleet_name==levels(factor(agg$Fleet_name))[i])))
     }
   }
 
@@ -72,11 +93,11 @@ produceRuns <- function(summaryoutput){
   # Make JABBA-Residual Plot
   #---------------------------------------
 
-  resids = dcast(d,Yr~Name,value.var="residual")
+  resids = dcast(d,Yr~Fleet_name,value.var="residual")
   # JABBA-residual plot
   Par = list(mfrow=c(1,1),mar = c(3.5, 3.5, 0.1, 0.1), mgp =c(2.,0.5,0), tck = -0.02,cex=0.8)
-  png(file = paste0("JABBAresiduals.png"), width = 5, height = 3.5,
-      res = 200, units = "in")
+  png(file = paste0("./plots/JABBAresiduals.png"), width = 5, height = 3.5,
+      res = 420, units = "in")
   par(Par)
   Resids = t(resids[,-1])
   Yr = resids[,1]
@@ -104,6 +125,6 @@ produceRuns <- function(summaryoutput){
 
   dev.off()
 
+  graphics.off()
 
-  
 }
