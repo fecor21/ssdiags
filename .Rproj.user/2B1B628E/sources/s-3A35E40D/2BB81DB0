@@ -7,12 +7,12 @@
     "folds" : "",
     "hash" : "0",
     "id" : "2BB81DB0",
-    "lastKnownWriteTime" : 1553228964,
-    "last_content_update" : 1553228964482,
+    "lastKnownWriteTime" : 1553229280,
+    "last_content_update" : 1553229280247,
     "path" : "~/GitHub/ssdiags/R/produceRuns.R",
     "project_path" : "R/produceRuns.R",
     "properties" : {
-        "cursorPosition" : "6,28",
+        "cursorPosition" : "14,22",
         "scrollLine" : "0"
     },
     "relative_order" : 3,

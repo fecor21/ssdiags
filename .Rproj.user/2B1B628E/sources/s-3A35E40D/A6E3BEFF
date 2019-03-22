@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1553229129586.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "A6E3BEFF",
+    "lastKnownWriteTime" : 1553228240,
+    "last_content_update" : 1553228240,
+    "path" : "~/GitHub/ssdiags/R/deprecated/SS3_Diagnostics.R",
+    "project_path" : "R/deprecated/SS3_Diagnostics.R",
+    "properties" : {
+        "cursorPosition" : "7,0",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

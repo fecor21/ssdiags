@@ -9,12 +9,12 @@ produceRuns <- function(summaryoutput){
   #---------------------
   # Index color palette
   #---------------------
-  # jabba.colors = as.character(c('#e6194b', "#3cb44b", "#ffe119",
-  #                               "#0082c8","#f58231", "#911eb4",
-  #                               "#46f0f0", "#f032e6", "#d2f53c",
-  #                               "#fabebe", "#008080","#e6beff", "#aa6e28",rainbow(12)[seq(1,12,3)],rainbow(12)[seq(2,12,3)],rainbow(12)[seq(3,12,3)]))
-  #
-  # cols = jabba.colors
+  jabba.colors = as.character(c('#e6194b', "#3cb44b", "#ffe119",
+                                "#0082c8","#f58231", "#911eb4",
+                                "#46f0f0", "#f032e6", "#d2f53c",
+                                "#fabebe", "#008080","#e6beff", "#aa6e28",rainbow(12)[seq(1,12,3)],rainbow(12)[seq(2,12,3)],rainbow(12)[seq(3,12,3)]))
+
+  cols = jabba.colors
 
   par.save <- par
   # Extract residual for by scenario and index
