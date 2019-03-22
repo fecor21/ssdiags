@@ -7,13 +7,13 @@
     "folds" : "",
     "hash" : "0",
     "id" : "4B8C1505",
-    "lastKnownWriteTime" : 1553229586,
-    "last_content_update" : 1553229586287,
+    "lastKnownWriteTime" : 1553229843,
+    "last_content_update" : 1553229843801,
     "path" : "~/GitHub/ssdiags/R/runsSizeComp.R",
     "project_path" : "R/runsSizeComp.R",
     "properties" : {
-        "cursorPosition" : "183,57",
-        "scrollLine" : "171"
+        "cursorPosition" : "110,34",
+        "scrollLine" : "67"
     },
     "relative_order" : 4,
     "source_on_save" : false,
