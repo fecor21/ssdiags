@@ -1,4 +1,6 @@
-# ssdiags
-`install.packages("devtools")`
+# ssdiags: R code for Diagnostics of Stock Synthesis Models
 
-`devtools::install_github("mkapur/ssdiags")`
+```S
+install.packages("devtools")
+devtools::install_github("mkapur/ssdiags")
+```
