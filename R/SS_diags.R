@@ -22,4 +22,4 @@ SS_diags <- function(summaryoutput,
                                 fleet = fleet)}
   }
 
-}
+

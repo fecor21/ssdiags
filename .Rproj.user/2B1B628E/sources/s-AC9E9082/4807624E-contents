@@ -1,12 +1,8 @@
-Package: ssdiags
-Type: Package
-Title: What the Package Does (Title Case)
-Version: 0.1.0
+Package: kaputils
+Title: Utilities for Stock Assessment Simulation and Data Analysis
+Version: 0.0.0.9000
 Authors@R: person("Maia", "Kapur", email = "kapurm@uw.edu", role = c("aut", "cre"))
-Maintainer: Maia Kapur <kapurm@uw.edu>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Description: What the package does (one paragraph).
 Depends: R (>= 3.2.0),
     dplyr,
     r4ss,
@@ -17,8 +13,12 @@ Depends: R (>= 3.2.0),
     jpeg,
     gridExtra,
     RColorBrewer,
-    gridBase
+    gridBase,
+    maps
+License: What license is it under?
 Encoding: UTF-8
+LazyData: true
+Suggests: testthat
 Imports: 
     dplyr,
     r4ss,
@@ -29,5 +29,3 @@ Imports:
     jpeg,
     gridExtra,
     RColorBrewer
-LazyData: true
-
