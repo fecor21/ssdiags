@@ -18,7 +18,9 @@ Depends: R (>= 3.2.0),
     jpeg,
     gridExtra,
     RColorBrewer,
-    gridBase
+    gridBase,
+    foreach,
+    doSNOW
 Encoding: UTF-8
 Imports: 
     dplyr,
