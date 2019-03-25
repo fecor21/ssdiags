@@ -1,6 +1,6 @@
 #' r0_profile
 #' \code{r0_profile} Conduct R0 profiling and generate plot
-#' @param summaryoutput an object generated via SS_output
+#' @param moddir the location of the model
 #' @param plot do you want to create a profile plot?
 #' @param parm.min start value for profiling
 #' @param parm.max stop value for profiling
@@ -9,10 +9,10 @@
 
 #' @seealso \code{\link[r4ss]}
 
-r0_profile <- function(summaryoutput, plot = TRUE,
+r0_profile <- function(moddir, plot = TRUE,
                        parm.min = 4.5, parm.max = 6.5,
                        parm.step = 0.1){
-  wd <- paste0(getwd(),"/R0_profile/")
+  wd <- paste0(moddir,"/R0_profile/")
   if(!exists(wd)) dir.create(wd)
   setwd(wd)
   #set working directory
@@ -48,7 +48,7 @@ r0_profile <- function(summaryoutput, plot = TRUE,
   #runss.str <- './SS324ab.bin -nohess -nox' # Comment out for windows
   runss.str <- 'ss.exe -nohess -nox' # Uncomment for Windows
 
-  origwd <- getwd()
+  origwd <- moddir
 
   parm.vec <- seq(parm.min, parm.max, parm.step)
   numdir <- length(parm.vec)
