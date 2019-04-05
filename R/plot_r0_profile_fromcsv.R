@@ -33,12 +33,12 @@ ggplot(., aes(x = SR_LN.R0., y = value, color = variable,pch = variable)) +
   scale_color_manual(values=c('black',rainbow(3))) +
   labs(x = profile.label, pch = '', color = '',
        y = 'Change in Log-Likelihood')
-ggsave(plot = last_plot(),  file = paste0("PinerPlot.tiff"), 
+ggsave(plot = last_plot(),  file = paste0("PinerPlot.tiff"),
        width = 4, height = 6, units = 'in', dpi = 480)
 ## R0 color by fleet ---
 plist[[2]] <- cbind(df$Label, df$SR_LN.R0.,df[,survmatch],df$ALL) %>%
   filter(df$Label == 'Surv_like') %>%
-  select(-"df$Label") %>%
+  # select(-c("df$Label") )%>%
   plyr::rename(c("df$SR_LN.R0." = "SR_LN.R0.", "df$ALL"='ALL')) %>%
   melt(id = c('SR_LN.R0.')) %>%
   ggplot(., aes(x = SR_LN.R0., y = value, color = variable,pch = variable)) +
@@ -51,7 +51,8 @@ plist[[2]] <- cbind(df$Label, df$SR_LN.R0.,df[,survmatch],df$ALL) %>%
   labs(x = profile.label, pch = '', color = '',
        y = 'Change in Log-Likelihood',
        title = 'Changes in Index Likelihood by Fleet')
-ggsave(plot = last_plot(),  file = paste0("Index Likelihood by Fleet.tiff"), 
+
+ggsave(plot = last_plot(),  file = paste0("Index Likelihood by Fleet.tiff"),
        width = 4, height = 6, units = 'in', dpi = 480)
 
 ## LengthLike color by fleet ----
@@ -72,7 +73,7 @@ plist[[3]] <- cbind(df$Label.1, df$SR_LN.R0.,df[,fleetmatch],df$ALL.1) %>%
   labs(x = profile.label,  color = '',
        y = 'Change in Log-Likelihood',
        title = 'Changes in Length_Like by Fleet')
-ggsave(plot = last_plot(),  file = paste0("Length_Like by Fleet.tiff"), 
+ggsave(plot = last_plot(),  file = paste0("Length_Like by Fleet.tiff"),
        width = 4, height = 6, units = 'in', dpi = 480)
 
 ## Changes in catchlike by fleet ----
@@ -93,7 +94,7 @@ plist[[4]] <-cbind(df$Label.2, df$SR_LN.R0.,df[,catchmatch],df$ALL.2) %>%
   labs(x = "log(R0)", pch = '', color = '',
        y = 'Change in Log-Likelihood',
        title = 'Changes in Catch Likelihood by Fleet')
-ggsave(plot = last_plot(),  file = paste0("Catch Likelihood by Fleet.tiff"), 
+ggsave(plot = last_plot(),  file = paste0("Catch Likelihood by Fleet.tiff"),
        width = 4, height = 6, units = 'in', dpi = 480)
 
 
