@@ -1,1 +1,3 @@
 *.rproj*
+.Rhistory
+.Rproj.user/shared/notebooks/paths
