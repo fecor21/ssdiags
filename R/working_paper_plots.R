@@ -1,5 +1,6 @@
 require(r4ss)
 require(dplyr)
+require(ggplot2)
 devtools::install_github("mkapur/kaputils")
 ## if prompted don't update anything
 # library(kaputils)
@@ -13,8 +14,11 @@ if(!exists(paste0(rootdir,"/plots"))) dir.create(paste0(rootdir,"/plots"))
 ## generate all r4ss comparison plots on suite of models (recommend n < 10)
 ## update covar and ncol as needed
 mod.sum <- lapply(mods,SS_output, covar = FALSE) %>% SSsummarize(.)
-SSplotComparisons(mod.sum, print = T, plotdir = paste0(rootdir,"/plots"))
+# SSplotComparisons(mod.sum, print = T, plotdir = paste0(rootdir,"/plots"))
 
+## plot SPB over time for all models ----
+
+## plot recdevs for all models, with line ----
 
 ## **kaputils** generate CSV for post-hoc analyses ----
 ## will save to rootdir/results
@@ -41,3 +45,8 @@ kaputils::plotKobe_compare(rootdir,
                            saveplot = T,
                            plotloc = paste0(rootdir,"/plots/"),
                            doLegend = T)
+
+## **kaputils** extract ML and write csv to results/ ----
+francisdat <- kaputils::SSMethod.TA1.8.MK(mod, type = 'len',fleet = 1:5, pick.gender = 0:3, plotit = T) %>% as.data.frame()
+francisdat$Fleet <- mod$FleetNames[francisdat$Fleet] ## name the actual fleets
+write.csv(francisdat,"results/francisDat.csv",row.names=F) ## save it
