@@ -67,6 +67,7 @@ ggplot(recdevs, aes(x =  pars.Yr, y = value, col = variable)) +
 ## this runs way faster if you pre-execute extractResults and reference the management_quantities.csv
 ## you must specify the name of the biomass column (varies by SS run)
 kaputils::plotKobe_compare(rootdir,
+                           kobe.type = 'ISC',
                            mq_csv = paste0(rootdir,"/results/management_quantities.csv"),
                            b.name = "SPB_SSBMSY",
                            f.name = 'F_FMSY',
