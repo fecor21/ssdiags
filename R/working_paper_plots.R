@@ -6,19 +6,17 @@ devtools::install_github("mkapur/kaputils")
 # library(kaputils)
 
 ## identify directory that has executed models in it
-rootdir <- "C:/Users/Maia Kapur/Dropbox/UW/coursework/FISH-555/stm_mods/wp_test"
+rootdir <- "C:/Users/MKapur/Dropbox/UW/coursework/FISH-555/stm_mods/wp_test"
 ## create list of subdirs in this directory, you can use 'grep' if needed
-mods <- list.dirs(rootdir, recursive = FALSE)[!grepl('plots',list.dirs(rootdir, recursive = FALSE))]
+mods <- list.dirs(rootdir, recursive = FALSE)[!grepl('plots|results',list.dirs(rootdir, recursive = FALSE))]
 if(!exists(paste0(rootdir,"/plots"))) dir.create(paste0(rootdir,"/plots"))
 
-## generate all r4ss comparison plots on suite of models (recommend n < 10)
+## generate ALL r4ss comparison plots on suite of models (recommend n < 10)
 ## update covar and ncol as needed
 mod.sum <- lapply(mods,SS_output, covar = FALSE) %>% SSsummarize(.)
-# SSplotComparisons(mod.sum, print = T, plotdir = paste0(rootdir,"/plots"))
+SSplotComparisons(mod.sum, print = T, plotdir = paste0(rootdir,"/plots"))
 
-## plot SPB over time for all models ----
 
-## plot recdevs for all models, with line ----
 
 ## **kaputils** generate CSV for post-hoc analyses ----
 ## will save to rootdir/results
@@ -31,6 +29,38 @@ kaputils::extractResults(
   writeTables = TRUE,
   FleetName = 'All'
 )
+
+## Plotting using SPRSeries.csv generated above ----
+sprs <- read.csv(paste0(rootdir,"/results/SPRseries.csv"))
+## plot SPB over time for all models ----
+ggplot(sprs, aes(x = Yr, y = SSB, col = MOD)) +
+  theme_minimal()+
+  theme(panel.grid = element_blank(),
+        legend.position = c(0.9,0.9)) +
+  scale_y_continuous(limits = c(0,1.1*max(sprs$SSB))) +
+  scale_color_manual(values = c('dodgerblue2','grey22')) +
+  geom_line(lwd = 1.1, alpha = 0.5) +
+  geom_point(col = 'black') +
+  labs(x = 'Year', y = 'Spawning Stock Biomass', color = "")
+
+pars <- data.frame(mod.sum[8])
+## plot recdevs for all models, with line ----
+recdevs <- pars[grep('RecrDev',pars$pars.Label),] %>%
+  select(pars.model1, pars.model2, pars.Yr) %>%
+  plyr::rename(c("pars.model1" = basename(mods[1]),"pars.model2" = basename(mods[2]))) %>%
+  reshape2::melt(id = 'pars.Yr')
+
+ggplot(recdevs, aes(x =  pars.Yr, y = value, col = variable)) +
+  theme_minimal()+
+  theme(panel.grid = element_blank(),
+        legend.position = c(0.9,0.9)) +
+  geom_hline(yintercept = 0, col = 'red') +
+  scale_color_manual(values = c('dodgerblue2','grey22')) +
+  geom_line(lwd = 1.1, alpha = 0.5) +
+  geom_point() +
+  labs(x = 'Year', y = 'Recruitment Deviates', color = "")
+
+
 
 ## **kaputils** generate kobe with multiple end-points ----
 ## will save to rootdir/plots
