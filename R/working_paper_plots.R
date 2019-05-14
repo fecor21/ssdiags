@@ -3,7 +3,7 @@ require(dplyr)
 require(ggplot2)
 devtools::install_github("mkapur/kaputils")
 ## if prompted don't update anything
-# library(kaputils)
+library(kaputils)
 
 ## identify directory that has executed models in it
 rootdir <- "C:/Users/MKapur/Dropbox/UW/coursework/FISH-555/stm_mods/wp_test"
@@ -21,7 +21,7 @@ SSplotComparisons(mod.sum, print = T, plotdir = paste0(rootdir,"/plots"))
 ## **kaputils** generate CSV for post-hoc analyses ----
 ## will save to rootdir/results
 ## You pass a vector of fleetnames to subset for extraction or leave as "all"
-kaputils::extractResults(
+kaputils:::extractResults(
   rootdir,
   terminal_year = 2017,
   pattern = 'Model',
@@ -72,7 +72,7 @@ ggsave(plot =last_plot(),
 ## will save to rootdir/plots
 ## this runs way faster if you pre-execute extractResults and reference the management_quantities.csv
 ## you must specify the name of the biomass column (varies by SS run)
-kaputils::plotKobe_compare(rootdir,
+kaputils:::plotKobe_compare(rootdir,
                            kobe.type = 'ISC',
                            axes.limits = c(2,2),
                            mq_csv = paste0(rootdir,"/results/management_quantities.csv"),
