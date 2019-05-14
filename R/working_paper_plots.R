@@ -1,23 +1,23 @@
 require(r4ss)
 require(dplyr)
 require(ggplot2)
-devtools::install_github("mkapur/kaputils")
+# devtools::install_github("mkapur/kaputils")
 ## if prompted don't update anything
-library(kaputils)
-require('gtools')
+# library(kaputils)
+require(gtools)
 
 ## identify directory that has executed models in it
 rootdir <- "C:/Users/MKapur/Dropbox/UW/coursework/FISH-555/stm_mods/wp_test"
 ## create list of subdirs in this directory, you can use 'grep' if needed
 mods <- list.dirs(rootdir, recursive = FALSE)[!grepl('plots|results',list.dirs(rootdir, recursive = FALSE))]
+modnums <- sort(as.numeric(gsub(".*_", "\\1", mods)))
 if(!exists(paste0(rootdir,"/plots"))) dir.create(paste0(rootdir,"/plots"))
 
 ## generate ALL r4ss comparison plots on suite of models (recommend n < 10)
 ## update covar and ncol as needed
 mod.sum <- lapply(mixedsort(mods),SS_output, covar = FALSE) %>% SSsummarize(.)
-SSplotComparisons(mod.sum, print = FALSE, legendorder = c(1:9,11,13:21), subplots = 3, plotdir = paste0(rootdir,"/plots"))
-
-
+# SSplotComparisons(mod.sum, print = FALSE, subplots = 3, plotdir = paste0(rootdir,"/plots"))
+SSplotComparisons(mod.sum, print = T, legendorder = c(modnums), plotdir = paste0(rootdir,"/plots"))
 
 ## **kaputils** generate CSV for post-hoc analyses ----
 ## will save to rootdir/results
