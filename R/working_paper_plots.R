@@ -16,7 +16,6 @@ if(!exists(paste0(rootdir,"/plots"))) dir.create(paste0(rootdir,"/plots"))
 ## generate ALL r4ss comparison plots on suite of models (recommend n < 10)
 ## update covar and ncol as needed
 mod.sum <- lapply(mixedsort(mods),SS_output, covar = FALSE) %>% SSsummarize(.)
-# SSplotComparisons(mod.sum, print = FALSE, subplots = 3, plotdir = paste0(rootdir,"/plots"))
 SSplotComparisons(mod.sum, print = T, legendorder = c(modnums), plotdir = paste0(rootdir,"/plots"))
 
 ## **kaputils** generate CSV for post-hoc analyses ----
