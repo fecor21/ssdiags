@@ -7,7 +7,9 @@ require(ggplot2)
 require(gtools)
 
 ## identify directory that has executed models in it
-rootdir <- "C:/Users/MKapur/Dropbox/UW/coursework/FISH-555/stm_mods/wp_test"
+rootdir <- "C:/Users/mkapur/Dropbox/UW/coursework/FISH-555/SA_Meeting_Final Runs-20190513T235227Z-001/SA_Meeting_Final Runs/Sensitivity_Analysis"## identify directory that has executed models in it
+
+# rootdir <- "C:/Users/MKapur/Dropbox/UW/coursework/FISH-555/stm_mods/wp_test"
 ## create list of subdirs in this directory, you can use 'grep' if needed
 mods <- list.dirs(rootdir, recursive = FALSE)[!grepl('plots|results',list.dirs(rootdir, recursive = FALSE))]
 modnums <- sort(as.numeric(gsub(".*_", "\\1", mods)))
