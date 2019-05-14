@@ -25,7 +25,6 @@ kaputils:::extractResults(
   rootdir,
   terminal_year = 2017,
   pattern = 'Model',
-  subpattern = NA,
   writeTables = TRUE,
   FleetName = 'All'
 )
