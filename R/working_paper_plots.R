@@ -4,6 +4,7 @@ require(ggplot2)
 devtools::install_github("mkapur/kaputils")
 ## if prompted don't update anything
 library(kaputils)
+require('gtools')
 
 ## identify directory that has executed models in it
 rootdir <- "C:/Users/MKapur/Dropbox/UW/coursework/FISH-555/stm_mods/wp_test"
@@ -13,8 +14,8 @@ if(!exists(paste0(rootdir,"/plots"))) dir.create(paste0(rootdir,"/plots"))
 
 ## generate ALL r4ss comparison plots on suite of models (recommend n < 10)
 ## update covar and ncol as needed
-mod.sum <- lapply(mods,SS_output, covar = FALSE) %>% SSsummarize(.)
-SSplotComparisons(mod.sum, print = T, plotdir = paste0(rootdir,"/plots"))
+mod.sum <- lapply(mixedsort(mods),SS_output, covar = FALSE) %>% SSsummarize(.)
+SSplotComparisons(mod.sum, print = FALSE, legendorder = c(1:9,11,13:21), subplots = 3, plotdir = paste0(rootdir,"/plots"))
 
 
 
