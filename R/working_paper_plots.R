@@ -7,7 +7,7 @@ require(ggplot2)
 require(gtools)
 
 ## identify directory that has executed models in it
-rootdir <- "C:/Users/mkapur/Dropbox/UW/coursework/FISH-555/SA_Meeting_Final Runs-20190513T235227Z-001/SA_Meeting_Final Runs/Sensitivity_Analysis"## identify directory that has executed models in it
+rootdir <- "C:/Users/maia kapur/Dropbox/UW/coursework/FISH-555/SA_Meeting_Final Runs-20190513T235227Z-001/SA_Meeting_Final Runs/Sensitivity_Analysis"## identify directory that has executed models in it
 
 # rootdir <- "C:/Users/MKapur/Dropbox/UW/coursework/FISH-555/stm_mods/wp_test"
 ## create list of subdirs in this directory, you can use 'grep' if needed
@@ -18,7 +18,7 @@ if(!exists(paste0(rootdir,"/plots"))) dir.create(paste0(rootdir,"/plots"))
 ## generate ALL r4ss comparison plots on suite of models (recommend n < 10)
 ## update covar and ncol as needed
 mod.sum <- lapply(mixedsort(mods),SS_output, covar = FALSE) %>% SSsummarize(.)
-SSplotComparisons(mod.sum, print = T, legendorder = c(modnums), plotdir = paste0(rootdir,"/plots"))
+SSplotComparisons(mod.sum, print = TRUE, legendorder = c(modnums), plotdir = paste0(rootdir,"/plots"), btarg = -100)
 
 ## **kaputils** generate CSV for post-hoc analyses ----
 ## will save to rootdir/results
